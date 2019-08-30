@@ -39,6 +39,8 @@ services:
       - .:/project
     entrypoint: "bash -c \"\
         cargo build --target wasm32-unknown-unknown --release && \
+        mv /project/example/intkey_multiply/processor/target/wasm32-unknown-unknown/release/intkey-multiply.wasm \
+           /project/example/intkey_multiply/processor/intkey-multiply.wasm && \
         tail -f /dev/null \
         \""
     build:
@@ -80,7 +82,7 @@ services:
         while true; \
           do curl -s http://rest-api:9708/state | grep -q head; if [ $$? -eq 0 ]; then break; fi; sleep 0.5; done; \
         while true; \
-          do if [ -f /project/example/intkey_multiply/processor/target/wasm32-unknown-unknown/release/intkey-multiply.wasm ]; then break; fi; sleep 0.5; done; \
+          do if [ -f /project/example/intkey_multiply/processor/intkey-multiply.wasm ]; then break; fi; sleep 0.5; done; \
         cargo build && \
         cd /project/integration && \
         cargo test -- --nocapture

@@ -14,12 +14,12 @@
 
 name: intkey_multiply
 version: '1.0'
-wasm: processor/target/wasm32-unknown-unknown/release/intkey-multiply.wasm
+wasm: ./intkey-multiply.wasm
 inputs:
-  - 'cad11d'
-  - '1cf126'
   - '00ec03'
+  - '1cf126'
+  - 'cad11d'
 outputs:
+  - '00ec03'
   - '1cf126'
   - 'cad11d'
-  - '00ec03'
